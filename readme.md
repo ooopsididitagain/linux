@@ -12,8 +12,7 @@ head -n 1000 ~/somefile.log - показать первые 1000 строк фа
 
 tail -f ~/somefile.log - ключ -f позволяет показывать новые строки по мере их появления.
 
-tail -100f ~/somefile.log - следить за обновлением файла, только показать перед этим последние 100 строк.
-
- > newfile.txt == touch newfile.txt
+<code>tail -100f ~/somefile.log</code> - следить за обновлением файла, только показать перед этим последние 100 строк.
+<code>> newfile.txt == touch newfile.txt</code>
 
 
