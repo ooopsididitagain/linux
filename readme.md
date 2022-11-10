@@ -207,9 +207,6 @@ lrwxrwxrwx   1 root root      20 мар 22  2020 libsidplay2.so.1 -> libsidplay2
 
   ```bash
   sudo apt-get update
-  ```
-
-  ```bash
   sudo apt-get upgrade
   ```
 
@@ -229,7 +226,7 @@ lrwxrwxrwx   1 root root      20 мар 22  2020 libsidplay2.so.1 -> libsidplay2
   ```bash
   sudo apt-cache policy
   ```
-- или
+  или
 
   ```bash
   vim /etc/apt/sources.list
