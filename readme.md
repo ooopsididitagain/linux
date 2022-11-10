@@ -3,14 +3,16 @@
 <h3 name="content">Содержание</h3>
 <hr>
 
-1. [Перемещение по системе](#movement)
-2. [Переменные окружения](#env)
-3. [Команды head & tail](#ht)
-4. [Команды touch, mv, cp, rm](#tmcr)
-5. [Символьные ссылки](#ln)
-6. [Пакетный менеджер apt](#apt)
-7. [Пользователи и группы](#usgr)
-8. [Доступы](#pr)
+1.  [Перемещение по системе](#movement)
+2.  [Переменные окружения](#env)
+3.  [Команды head & tail](#ht)
+4.  [Команды touch, mv, cp, rm](#tmcr)
+5.  [Символьные ссылки](#ln)
+6.  [Пакетный менеджер apt](#apt)
+7.  [Пользователи и группы](#usgr)
+8.  [Доступы](#pr)
+9.  [Alias](#al)
+10. [Find](#fi)
 
 <h3 name="movement">Перемещение</h3>
 <hr>
@@ -138,7 +140,8 @@ lrwxrwxrwx   1 root root      20 мар 22  2020 libsidplay2.so.1 -> libsidplay2
 > Далее все команды начинаются с sudo, подразумевая что пользователь состоит в группе sudo.
 > Что-бы запустить пакет, обычно нужно ввести команду, которая соответствует названию пакета.</i>
 
-- пакетный менеджер <code><b>apt</b></code> предлагает нам возможность посмотреть информацию о пакете перед его загрузкой:
+- пакетный менеджер <code><b>apt</b></code> предлагает нам возможность посмотреть информацию о пакете перед его
+  загрузкой:
 
   ```bash
   sudo apt-cache search ncdu
@@ -177,7 +180,7 @@ lrwxrwxrwx   1 root root      20 мар 22  2020 libsidplay2.so.1 -> libsidplay2
   ```bash
   sudo apt-get autoremove
   ```
-  
+
 - посмотреть все доступные пакеты, которые у нас есть на данный момент:
 
   ```bash
@@ -190,7 +193,7 @@ lrwxrwxrwx   1 root root      20 мар 22  2020 libsidplay2.so.1 -> libsidplay2
   ```bash
   sudo apt-cache show ncdu
   ```
-  
+
 - посмотреть зависимости конкретного пакета:
 
   ```bash
@@ -234,12 +237,12 @@ lrwxrwxrwx   1 root root      20 мар 22  2020 libsidplay2.so.1 -> libsidplay2
   vim /etc/apt/sources.list
   ```
 
-
 <h3 name="usgr">Пользователи и группы</h3>
+<hr>
 
 > **Note** \
-> <i>Я предпочитаю команду <code><b>adduser</b></code>, это удобно, но есть и команда <code><b>useradd</b></code>, 
-> которая значительно отличается, например, не создается домашняя директория. 
+> <i>Я предпочитаю команду <code><b>adduser</b></code>, это удобно, но есть и команда <code><b>useradd</b></code>,
+> которая значительно отличается, например, не создается домашняя директория.
 > Флаг <code><b>useradd -m</b></code> создаст домашнюю директорию.</i>
 
 - создать пользователя, проверить наличие нового пользователя и добавить пароль:
@@ -252,7 +255,7 @@ lrwxrwxrwx   1 root root      20 мар 22  2020 libsidplay2.so.1 -> libsidplay2
 
 - удалить пользователя:
   <i>Флаг <code><b>-r</b></code> удалит пользователя вместе с его домашней директорией.</i>
-  
+
   ```bash
   sudo userdel newuser   
   ```
@@ -269,13 +272,13 @@ lrwxrwxrwx   1 root root      20 мар 22  2020 libsidplay2.so.1 -> libsidplay2
   ```
 
 
-- создать новую группу 
+- создать новую группу
 
   ```bash
   sudo groupadd newgroup
   ```
 
-- добавить пользователя в группу 
+- добавить пользователя в группу
 
   ```bash
   sudo usermod -aG newgroup newuser
@@ -287,54 +290,69 @@ lrwxrwxrwx   1 root root      20 мар 22  2020 libsidplay2.so.1 -> libsidplay2
   sudo gpasswd --delete newuser newgroup
   ```
 
-
-
 <h3 name="pr">Доступы</h3>
+<hr>
 
 > **Note** \
 > r - read \
 > w - write \
 > x - execute (исполнять)
 
+- распределение прав:
 
   ```bash
   Собственник Группа Все остальные
   -rwx rwx rwx
   ```
 
-  ```bash
+- сделать файл запускаемым
 
+  ```bash
+  chmod +x file.bin
+  ```
+
+- поменяем собственника файла:
+
+  ```bash
+  sudo chown newuser:newgroup test-2.sh
   ```
 
 
+- добавить пользователя в группу sudo:
 
-Сделать файл запускаемым chmod +x file.bin
+  ```bash
+  sudo usermod -aG sudo newuser
+  ```
 
-Поменяем собственника файла test-2.sh
-sudo chown maria:principals test-2.sh
+- Предоставить доступы самой команды sudo:
 
-Дадим возможность пользователю pavel работать с sudo. Для этого нужно добавить его в группе sudo.
-Выполняем
+  ```bash
+  sudo visudo
+  ```
 
-sudo usermod -aG sudo pavel
+> **Note** \
+> <i>Открылся файл <b>/etc/sudoers.d</b> в текстовом редакторе nano. Единственное отличие от обыкновенного открытия в
+> редакторе, visudo проведёт валидацию файла перед его сохранением. Всегда пользуемся visudo. Добавляем следующую 
+> строку в файл:</i>
 
-Проверим наличие нового пользователя в группе sudo
+  ```bash
+  newuser ALL=(ALL) NOPASSWD:ALL
+  ```
 
-getent group sudo
+<h3 name="al">Alias</h3>
+<hr>
 
-Теперь нам нужно предоставить ему доступы самой команды sudo. Вводим команду
+> **Note** \
+> <i>alias необходимо добавить в файл .bashrc. Пример файла есть в репозитории.</i>
 
-sudo visudo
+- создать новый alias:
 
-Открылся файл /etc/sudoers.d в текстовом редакторе nano. Единственное отличие от обыкновенного открытия в редакторе,
-visudo проведёт валидацию файла перед его сохранением. Старайтесь всегда пользоваться именно visudo.
-Добавляем такую строку в этот файл
+  ```bash
+  alias mv="mv -i"
+  ```
 
-pavel ALL=(ALL) NOPASSWD:ALL
-
-Добавление alias
-
-alias mv="mv -i"
+<h3 name="fi">Find</h3>
+<hr>
 
 find -name "test*" -type f
 
