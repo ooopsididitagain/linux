@@ -1,0 +1,11 @@
+# Список пакетов для установки
+
+1. htop - продвинутый диспетчер задач
+
+    sudo apt-get install htop
+
+2. ncdu - для проверки размера файлов
+
+   sudo apt-get install ncdu
+
+3.
