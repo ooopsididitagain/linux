@@ -119,7 +119,17 @@ fi
 # add git branch name
 PS1='\[\033[0;32m\]\[\033[0m\033[0;32m\]\u\[\033[0;36m\] @ \[\033[0;36m\]\h \w\[\033[0;32m\]$(__git_ps1) [\D{%H:%M}]: \[\033[37m\]'
 
-# Alias to protect the file from being overwritten
+# Alias to protect the file from being overwritten and others
 alias mv="mv -i"
 alias cp="cp -i"
 alias rm="rm -i"
+alias ln="ln -i"
+alias c="clear"
+alias cd..="cd .."
+alias h="history"
+alias j="jobs -l"
+
+# Alias to protect permission for /
+alias chown='chown --preserve-root'
+alias chmod='chmod --preserve-root'
+alias chgrp='chgrp --preserve-root'
