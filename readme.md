@@ -1,3 +1,5 @@
+![Last Commit](https://img.shields.io/github/last-commit/ooopsididitagain/linux?style=for-the-badge&logo=github)
+
 <h3 name="content">Содержание</h3>
 <hr>
 
