@@ -10,6 +10,7 @@
 5. [Символьные ссылки](#ln)
 6. [Пакетный менеджер apt](#apt)
 7. [Пользователи и группы](#usgr)
+8. [Доступы](#pr)
 
 <h3 name="movement">Перемещение</h3>
 <hr>
@@ -255,7 +256,51 @@ lrwxrwxrwx   1 root root      20 мар 22  2020 libsidplay2.so.1 -> libsidplay2
   ```bash
   sudo userdel newuser   
   ```
+- посмотреть список существующих групп
 
+  ```bash
+  getent group
+  ```
+
+- посмотреть список существующих групп
+
+  ```bash
+  getent group
+  ```
+
+
+- создать новую группу 
+
+  ```bash
+  sudo groupadd newgroup
+  ```
+
+- добавить пользователя в группу 
+
+  ```bash
+  sudo usermod -aG newgroup newuser
+  ```
+
+- удалить пользователя из группы
+
+  ```bash
+  sudo gpasswd --delete newuser newgroup
+  ```
+
+
+
+<h3 name="pr">Доступы</h3>
+
+> **Note** \
+> r - read \
+> w - write \
+> x - execute (исполнять)
+
+
+  ```bash
+  Собственник Группа Все остальные
+  -rwx rwx rwx
+  ```
 
   ```bash
 
@@ -263,41 +308,7 @@ lrwxrwxrwx   1 root root      20 мар 22  2020 libsidplay2.so.1 -> libsidplay2
 
 
 
-
-# Группы пользователей
-
-Позволяет создать инфраструктуру
-
-Создадим группу юристы
-
-sudo groupadd lawyers
-
-Проверим, что группа создана  
-getent group
-
-Добавим Кирилла в группу юристов  
-sudo usermod -aG lawyers kirill
-
-Проверяем наличие Кирилла в группе юристов
-
-getent group lawyers
-
-Добавим Илью в группу юристов
-
-sudo usermod -a -G lawyers ilya
-
-удалить Илью из группы lawyers.
-
-sudo gpasswd --delete ilya lawyers
-
-# Доступы
-
-r - read
-w - write
-x - execute (исполнять)
-
-Собственник Группа Все остальные
--rwx rwx rwx
+Сделать файл запускаемым chmod +x file.bin
 
 Поменяем собственника файла test-2.sh
 sudo chown maria:principals test-2.sh
@@ -366,11 +377,4 @@ fg 1 - переключение на фоновый процесс
 
 sudo apt-get install ncdu -y
 
-- узнать размер файлов в указанной директории:
 
-  ```bash
-  ncdu
-  ```
-  
-
-Сделать файл запускаемым chmod +x file.bin
