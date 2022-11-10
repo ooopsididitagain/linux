@@ -46,31 +46,31 @@
 - показать первые 10 строк файла:
 
   ```bash
-  head ~/somefile.log
+  head /var/log/syslog
   ```
 
 - показать первые 1000 строк файла:
 
   ```bash
-  head -n 1000 ~/somefile.log
+  head -n 1000 /var/log/syslog
   ```
 
 - показать последние 10 строк файла:
 
   ```bash
-  tail ~/somefile.log
+  tail /var/log/syslog
   ```
 
 - ключ -f позволяет показывать новые строки по мере их появления:
 
   ```bash
-  tail -f ~/somefile.log
+  tail -f /var/log/syslog
   ```
   
 - следить за обновлением файла, только показать перед этим последние 100 строк:
 
   ```bash
-  tail -100f ~/somefile.log
+  tail -100f /var/log/syslog
   ```
 <h3 name="tmcr">Команды touch mv, cp, rm</h3>
 
