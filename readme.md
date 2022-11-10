@@ -294,7 +294,8 @@ lrwxrwxrwx   1 root root      20 мар 22  2020 libsidplay2.so.1 -> libsidplay2
 > **Note** \
 > r - read \
 > w - write \
-> x - execute (исполнять)
+> x - execute (исполнять) \
+> todo: добавить цифровое обозначение
 
 - распределение прав:
 
