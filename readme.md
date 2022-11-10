@@ -153,7 +153,14 @@ lrwxrwxrwx   1 root root      20 мар 22  2020 libsidplay2.so.1 -> libsidplay2
   ncdu
   ```
 
-- удалить установленный пакет:
+
+- удалить пакет:
+
+  ```bash
+  sudo apt-get remove
+  ```
+
+- удалить пакет и его настройки:
 
   ```bash
   sudo apt-get purge ncdu
@@ -194,36 +201,53 @@ lrwxrwxrwx   1 root root      20 мар 22  2020 libsidplay2.so.1 -> libsidplay2
   sudo apt-cache stats
   ```
 
+- команда <code><b>upgrade</b></code> делает очень много важных вещей. Рекомендуется всегда запускать эту команду
+  сразу после установки свежей системы. Она безопасно обновит все пакеты, у которых по какой-то причине были
+  установлены старые версии:
 
-Команда upgrade в apt делает очень много важных вещей. Я советую всегда запускать сразу после установки свежей системы.
-Она безопасно обновит все пакеты, у которых по какой-то причине были установлены старые версии. Запустим
+  ```bash
+  sudo apt-get update
+  ```
 
-sudo apt-get update
-sudo apt-get upgrade
+  ```bash
+  sudo apt-get upgrade
+  ```
 
-Если вы хотите просто обновить пакет для этого можно использовать команду install с ключом --only-upgrade. Запускаем
+- просто обновить пакет:
 
-sudo apt-get install vim --only-upgrade
+  ```bash
+  sudo apt-get install vim --only-upgrade
+  ```
 
-Удаление пакета
-sudo apt-get remove
+- список изменений, которые были внесены в конкретную версию того или иного пакета:
 
-Если вы хотите удалить также и настройки пакета, для этого используем команду purge.
-sudo apt-get purge
+  ```bash
+  sudo apt-get changelog postgresql
+  ```
+- просмотр репозиториев:
 
-ChangeLog - это список изменений, которые были внесены в конкретную версию того или иного приложения.
+  ```bash
+  sudo apt-cache policy
+  ```
+- или
 
-sudo apt-get changelog postgresql
+  ```bash
+  vim /etc/apt/sources.list
+  ```
 
-просмотр репозиториев:
 
-sudo apt-cache policy
-или
-vim /etc/apt/sources.list
-
-Сделать файл запускаемым chmod +x file.bin
 
 # Добавление пользователей
+
+
+  ```bash
+
+  ```
+
+  ```bash
+
+  ```
+
 
 (Я предпочитаю adduser)
 sudo useradd newuser (Флаг -m создаст домашнюю директорию)
@@ -341,3 +365,6 @@ sudo apt-get install ncdu -y
   ```bash
   ncdu
   ```
+  
+
+Сделать файл запускаемым chmod +x file.bin
