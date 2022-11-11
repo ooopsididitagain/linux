@@ -237,6 +237,12 @@ lrwxrwxrwx   1 root root      20 мар 22  2020 libsidplay2.so.1 -> libsidplay2
   ```bash
   vim /etc/apt/sources.list
   ```
+  
+- очистка кэша пакетов:
+
+  ```bash
+  apt autoclean 
+  ```
 
 <h3 name="usgr">Пользователи и группы</h3>
 <hr>
@@ -432,4 +438,14 @@ lrwxrwxrwx   1 root root      20 мар 22  2020 libsidplay2.so.1 -> libsidplay2
   fg 1
   ```
 
+- онлайн-сервис для определения ip
 
+  ```bash
+  wget -qO- eth0.me
+  ```
+
+- отчет об использовании дискового пространства файловой системой:
+
+  ```bash
+  df -h
+  ```
