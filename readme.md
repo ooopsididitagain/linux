@@ -3,16 +3,17 @@
 <h3 name="content">Содержание</h3>
 <hr>
 
-1. [Перемещение по системе](#movement)
-2. [Переменные окружения](#env)
-3. [Команды head & tail](#ht)
-4. [Команды touch, mv, cp, rm](#tmcr)
-5. [Символьные ссылки](#ln)
-6. [Пакетный менеджер apt](#apt)
-7. [Пользователи и группы](#usgr)
-8. [Доступы](#pr)
-9. [Alias](#al)
+1.  [Перемещение по системе](#movement)
+2.  [Переменные окружения](#env)
+3.  [Команды head & tail](#ht)
+4.  [Команды touch, mv, cp, rm](#tmcr)
+5.  [Символьные ссылки](#ln)
+6.  [Пакетный менеджер apt](#apt)
+7.  [Пользователи и группы](#usgr)
+8.  [Доступы](#pr)
+9.  [Alias](#al)
 10. [Find](#fi)
+11. [Прочее](#an)
 
 <h3 name="movement">Перемещение</h3>
 <hr>
@@ -403,12 +404,32 @@ lrwxrwxrwx   1 root root      20 мар 22  2020 libsidplay2.so.1 -> libsidplay2
   find -mmin 1
   ```
 
+<h3 name="an">Прочее</h3>
+<hr>
 
+- узнать модель монитора:
 
-jobs -l - просмотр фоновых процессов
+  ```bash
+  xrandr | grep " connected" | cut -f1 -d " "
+  ```
 
-fg 1 - переключение на фоновый процесс
+- изменить яркость:
 
+  ```bash
+  xrandr --output [monitor-name] --brightness [brightness-level]
+  xrandr --output LVDS-1 --brightness 0.75
+  ```
 
+- просмотр фоновых процессов:
+
+  ```bash
+  jobs -l
+  ```
+
+- переключение на фоновый процесс:
+
+  ```bash
+  fg 1
+  ```
 
 
