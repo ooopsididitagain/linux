@@ -133,3 +133,14 @@ alias j="jobs -l"
 alias chown='chown --preserve-root'
 alias chmod='chmod --preserve-root'
 alias chgrp='chgrp --preserve-root'
+
+# Alias for kubectl
+alias k=kubectl
+ 
+# Config path for krew (for kubectl)
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+ 
+# Alias for editing the terminal title
+function settitle {
+    echo -e "\033]0;$1\007"
+}
